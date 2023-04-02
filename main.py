@@ -29,7 +29,6 @@ def process_queries(queries):
 
             else:
                 contacts.append(cur_query)
-
         elif cur_query.type == 'del':
             for j in range(len(contacts)):
                 if contacts[j].number == cur_query.number:
@@ -37,12 +36,12 @@ def process_queries(queries):
                     break
 
         else:          
-         response = 'not found'
-         for contact in contacts:
-            if contact.number == cur_query.number:
-                response = contact.name
-                break
-        result.append(response)
+            response = 'not found'
+            for contact in contacts:
+                if contact.number == cur_query.number:
+                   response = contact.name
+                   break
+            result.append(response)
     return result
 
 if __name__ == '__main__':
