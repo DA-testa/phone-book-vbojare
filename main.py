@@ -18,10 +18,12 @@ def process_queries(queries):
     result = []  
     contacts = dict()
     for cur_query in queries:
+        
         if cur_query.type == 'add':
-                if contact.number in contacts.keys():
+                if cur_query in contacts.keys():
                     contacts.pop(cur_query.number)
               contacts[cur_query.number] = cur_query.name
+
         elif cur_query.type == 'del':
               if cur_query.number in contacts.keys():
                 contacts.pop(cur_query.number)
