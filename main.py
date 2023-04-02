@@ -38,9 +38,9 @@ def process_queries(queries):
 
         else:          
          response = 'not found'
-         for contacts in contacts:
-            if contacts.number == cur_query.number:
-                response = contacts.name
+         for contact in contacts:
+            if contact.number == cur_query.number:
+                response = contact.name
                 break
           result.append(response)
     return result
