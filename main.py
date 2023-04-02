@@ -16,35 +16,26 @@ def write_responses(result):
 
 def process_queries(queries):
     result = []  
-    contacts = []
+    contacts = dict()
     for cur_query in queries:
         if cur_query.type == 'add':
-            #for contact in contacts:
-                #if contact.number == cur_query.number:
-                 #   contact.name = cur_query.name
-                  #  break
-           # else: 
-              #  contacts.append(cur_query)
+                if contact.number in contacts.keys():
+                    contacts.pop(cur_query.number)
               contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
-            #for j in range(len(contacts)):
-             #   if contacts[j].number == cur_query.number:
-             #       contacts.pop(j)
-              #      break
-              #contacts.pop(cur_query.number, None)
-              if cur_query.number in contacts:
-                del contacts[cur_query.number]
-        else:
-           # response = 'not found'
-           # for contact in contacts:
-             #   if contact.number == cur_query.number:
-              #      response = contact.name
-                #    break
-          
-         result.append(contacts.get(cur_query.number, 'not found')) 
+              if cur_query.number in contacts.keys():
+                contacts.pop(cur_query.number)
+
+        elif cur_query.type == 'find':
+            if cur_query.number in contacts.keys():
+                response = (contacts.get(cur_query.number))
+
+        else:          
+         response = 'not found'
           result.append(response)
     return result
 
 if __name__ == '__main__':
     write_responses(process_queries(read_queries()))
 
+#Viktorija Bojare 221RDB400
