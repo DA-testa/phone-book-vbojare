@@ -16,17 +16,25 @@ def write_responses(result):
 
 def process_queries(queries):
     result = []  
-    contacts = dict()
+    contacts = []
     for cur_query in queries:
 
         if cur_query.type == 'add':
-            #if cur_query.number in contacts.keys():
-                 #   contacts.pop(cur_query.number)
-              contacts[cur_query.number] = cur_query.name
+            found = False
+            for i in range(len(contacts)):
+                if contacts[i].number == cur_query.number:
+                    contacts[i].name = cur_query.name
+                    found = True
+                    break
+
+           else:
+            contacts.append(cur_query)
 
         elif cur_query.type == 'del':
-              if cur_query.number in contacts.keys():
-                contacts.pop(cur_query.number)
+            for j in range(len(contacts)):
+                if contacts[j].number == cur_query.number:
+                    contacts.pop(j)
+            break
 
         elif cur_query.type == 'find':
             if cur_query.number in contacts.keys():
@@ -34,6 +42,10 @@ def process_queries(queries):
 
         else:          
          response = 'not found'
+         for contacts in contacts:
+            if contacts.number == cur_query.number:
+                response = contacts.name
+                break
           result.append(response)
     return result
 
