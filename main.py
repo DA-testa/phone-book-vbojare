@@ -20,8 +20,8 @@ def process_queries(queries):
     for cur_query in queries:
 
         if cur_query.type == 'add':
-                if cur_query.number in contacts.keys():
-                    contacts.pop(cur_query.number)
+            #if cur_query.number in contacts.keys():
+                 #   contacts.pop(cur_query.number)
               contacts[cur_query.number] = cur_query.name
 
         elif cur_query.type == 'del':
@@ -30,7 +30,7 @@ def process_queries(queries):
 
         elif cur_query.type == 'find':
             if cur_query.number in contacts.keys():
-                response = (contacts.get(cur_query.number))
+                response = contacts[cur_query.number]
 
         else:          
          response = 'not found'
