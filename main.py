@@ -1,4 +1,4 @@
-# python3
+# python3 
 
 class Query:
     def __init__(self, query):
@@ -34,11 +34,7 @@ def process_queries(queries):
             for j in range(len(contacts)):
                 if contacts[j].number == cur_query.number:
                     contacts.pop(j)
-            break
-
-        elif cur_query.type == 'find':
-            if cur_query.number in contacts.keys():
-                response = contacts[cur_query.number]
+                     break
 
         else:          
          response = 'not found'
